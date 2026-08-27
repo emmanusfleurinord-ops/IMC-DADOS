@@ -3,126 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Calculadora moderna de IMC com classificação, faixa de peso saudável e explicações claras.">
-  <title>IMC Dados — Calculadora Moderna</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>Calculadora de IMC</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="bg-orb orb-a" aria-hidden="true"></div>
-  <div class="bg-orb orb-b" aria-hidden="true"></div>
-  <div class="bg-orb orb-c" aria-hidden="true"></div>
-  <header class="topbar">
-    <a class="brand" href="#inicio"><span class="logo" aria-hidden="true">◆</span>IMC Dados</a>
-    <nav>
-      <a href="#inicio">Calcular</a>
-      <a href="#sobre">O que é IMC</a>
-      <a href="#tabela">Tabela</a>
-      <a href="#dicas">Dicas</a>
-    </nav>
-  </header>
-  <main>
-    <section class="hero" id="inicio">
-      <div class="hero-copy">
-        <p class="eyebrow">Saúde · Educação · Dados</p>
-        <h1>Descubra o seu IMC de um jeito claro e moderno</h1>
-        <p class="lead">O Índice de Massa Corporal relaciona peso e altura. Aqui você calcula, vê a classificação e aprende o que esse número significa — e o que ele <strong>não</strong> diz.</p>
-        <ul class="pill-row">
-          <li>Cálculo instantâneo</li>
-          <li>Faixa de peso de referência</li>
-          <li>Explicação simples</li>
-        </ul>
-      </div>
-      <article class="card calculator" aria-labelledby="calc-title">
-        <h2 id="calc-title">Calculadora</h2>
-        <p class="card-hint">Altura pode ser em metros (1,70) ou em centímetros (170).</p>
-        <form id="imc-form" novalidate>
-          <div class="fields">
-            <label>Peso<div class="field"><input type="number" id="peso" name="peso" min="1" max="400" step="0.1" placeholder="Ex.: 65.5" required><span class="unit">kg</span></div></label>
-            <label>Altura<div class="field"><input type="number" id="altura" name="altura" min="0.4" max="250" step="0.01" placeholder="Ex.: 1.70 ou 170" required><span class="unit">m / cm</span></div></label>
-          </div>
-          <button type="submit" class="btn">Calcular IMC</button>
-        </form>
-        <p class="erro" id="erro" hidden></p>
-        <div class="result" id="resultado" hidden>
-          <div class="result-top">
-            <div><p class="imc-label">Seu IMC</p><p class="imc-value" id="imc-valor">—</p></div>
-            <span class="badge" id="imc-badge">—</span>
-          </div>
-          <div class="scale" aria-hidden="true">
-            <div class="scale-bar"></div>
-            <div class="scale-marker" id="scale-marker"></div>
-            <div class="scale-labels"><span>16</span><span>18,5</span><span>25</span><span>30</span><span>40</span></div>
-          </div>
-          <p class="result-text" id="imc-texto"></p>
-          <div class="stats">
-            <div><span>Peso informado</span><strong id="stat-peso">—</strong></div>
-            <div><span>Altura usada</span><strong id="stat-altura">—</strong></div>
-            <div><span>Faixa de referência</span><strong id="stat-faixa">—</strong></div>
-          </div>
-        </div>
-      </article>
-    </section>
-    <section class="info-grid" id="sobre">
-      <article class="card">
-        <h2>O que é o IMC?</h2>
-        <p>O IMC (Índice de Massa Corporal) é um número usado por profissionais de saúde para ter uma ideia geral da relação entre o peso e a altura de uma pessoa.</p>
-        <p>Ele foi criado pelo matemático Adolphe Quetelet e hoje é uma das referências mais usadas no mundo. É rápido de calcular, mas é só um ponto de partida.</p>
-      </article>
-      <article class="card formula-card">
-        <h2>Como se calcula</h2>
-        <p class="formula">IMC = peso ÷ (altura × altura)</p>
-        <p>O peso entra em quilogramas e a altura em metros. Exemplo:</p>
-        <ul class="steps">
-          <li>Peso 68 kg e altura 1,70 m</li>
-          <li>1,70 × 1,70 = 2,89</li>
-          <li>68 ÷ 2,89 ≈ <strong>23,5</strong></li>
-        </ul>
-      </article>
-      <article class="card">
-        <h2>O que o IMC não mede</h2>
-        <p>O IMC não diferencia músculo de gordura e não olha idade, ossos ou rotina.</p>
-        <ul class="steps">
-          <li>Não substitui consulta médica</li>
-          <li>Em crianças e adolescentes o ideal é a curva de crescimento</li>
-          <li>Atletas podem ter IMC alto por causa do músculo</li>
-        </ul>
-      </article>
-    </section>
-    <section class="card table-card" id="tabela">
-      <h2>Tabela de classificação (adultos)</h2>
-      <p class="card-hint">Referência da Organização Mundial da Saúde (OMS).</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>IMC</th><th>Classificação</th><th>O que isso indica</th></tr></thead>
-          <tbody>
-            <tr data-cat="abaixo"><td>Menor que 18,5</td><td>Abaixo do peso</td><td>Peso abaixo da faixa mais comum</td></tr>
-            <tr data-cat="normal"><td>18,5 a 24,9</td><td>Peso adequado</td><td>Faixa considerada saudável para a maioria dos adultos</td></tr>
-            <tr data-cat="sobrepeso"><td>25,0 a 29,9</td><td>Sobrepeso</td><td>Acima da faixa de referência</td></tr>
-            <tr data-cat="ob1"><td>30,0 a 34,9</td><td>Obesidade grau I</td><td>Vale conversar com um profissional de saúde</td></tr>
-            <tr data-cat="ob2"><td>35,0 a 39,9</td><td>Obesidade grau II</td><td>Acompanhamento profissional é importante</td></tr>
-            <tr data-cat="ob3"><td>40,0 ou mais</td><td>Obesidade grau III</td><td>Procure orientação médica</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-    <section class="tips" id="dicas">
-      <h2>Hábitos que ajudam de verdade</h2>
-      <p class="section-lead">Cuidar da saúde vai além de um número. Pequenas rotinas já fazem diferença.</p>
-      <div class="tips-grid">
-        <article class="card tip"><h3>Mover o corpo</h3><p>Caminhar, brincar, dançar ou praticar um esporte. O importante é se mexer com regularidade e com prazer.</p></article>
-        <article class="card tip"><h3>Comer com equilíbrio</h3><p>Frutas, verduras, feijão, arroz e água. Comidas variadas dão energia para estudar, brincar e crescer.</p></article>
-        <article class="card tip"><h3>Dormir bem</h3><p>O corpo se recupera durante o sono. Uma rotina de descanso ajuda a concentração e o humor.</p></article>
-        <article class="card tip"><h3>Pedir ajuda</h3><p>Dúvidas sobre peso ou crescimento? Converse com a família e com um médico ou nutricionista.</p></article>
-      </div>
-    </section>
-  </main>
-  <footer>
-    <p>IMC Dados — projeto educacional. O IMC é apenas uma referência e não substitui avaliação profissional.</p>
-    <p>Feito com HTML, CSS e JavaScript · Publicado no GitHub Pages</p>
-  </footer>
+  <div class="caixa">
+    <h1>Calculadora de IMC</h1>
+    <p class="subtitulo">Índice de Massa Corporal</p>
+
+    <p class="texto">
+      O IMC é um cálculo simples que usa o peso e a altura.
+      A fórmula é: <strong>IMC = peso ÷ (altura × altura)</strong>.
+      O peso deve estar em kg e a altura em metros.
+    </p>
+
+    <label for="peso">Peso (kg)</label>
+    <input type="number" id="peso" step="0.1" placeholder="Exemplo: 65">
+
+    <label for="altura">Altura (m)</label>
+    <input type="number" id="altura" step="0.01" placeholder="Exemplo: 1.70">
+
+    <button onclick="calcularIMC()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <h2>Tabela do IMC</h2>
+    <table>
+      <tr>
+        <th>IMC</th>
+        <th>Classificação</th>
+      </tr>
+      <tr>
+        <td>Menor que 18,5</td>
+        <td>Abaixo do peso</td>
+      </tr>
+      <tr>
+        <td>18,5 a 24,9</td>
+        <td>Peso normal</td>
+      </tr>
+      <tr>
+        <td>25,0 a 29,9</td>
+        <td>Sobrepeso</td>
+      </tr>
+      <tr>
+        <td>30,0 a 34,9</td>
+        <td>Obesidade grau I</td>
+      </tr>
+      <tr>
+        <td>35,0 a 39,9</td>
+        <td>Obesidade grau II</td>
+      </tr>
+      <tr>
+        <td>40,0 ou mais</td>
+        <td>Obesidade grau III</td>
+      </tr>
+    </table>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
