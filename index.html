@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Calculadora moderna de IMC com classificacao, faixa de peso saudavel e explicacoes claras.">
+  <meta name="description" content="Calculadora moderna de IMC com classificação, faixa de peso saudável e explicações claras.">
   <title>IMC Dados — Calculadora Moderna</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,112 +14,63 @@
   <div class="bg-orb orb-a" aria-hidden="true"></div>
   <div class="bg-orb orb-b" aria-hidden="true"></div>
   <div class="bg-orb orb-c" aria-hidden="true"></div>
-
   <header class="topbar">
-    <a class="brand" href="#inicio">
-      <span class="logo" aria-hidden="true">&#9670;</span>
-      IMC Dados
-    </a>
+    <a class="brand" href="#inicio"><span class="logo" aria-hidden="true">◆</span>IMC Dados</a>
     <nav>
       <a href="#inicio">Calcular</a>
-      <a href="#sobre">O que e IMC</a>
+      <a href="#sobre">O que é IMC</a>
       <a href="#tabela">Tabela</a>
       <a href="#dicas">Dicas</a>
     </nav>
   </header>
-
   <main>
     <section class="hero" id="inicio">
       <div class="hero-copy">
-        <p class="eyebrow">Saude · Educacao · Dados</p>
+        <p class="eyebrow">Saúde · Educação · Dados</p>
         <h1>Descubra o seu IMC de um jeito claro e moderno</h1>
-        <p class="lead">
-          O Indice de Massa Corporal relaciona peso e altura.
-          Aqui voce calcula, ve a classificacao e aprende o que esse numero significa — e o que ele <strong>nao</strong> diz.
-        </p>
+        <p class="lead">O Índice de Massa Corporal relaciona peso e altura. Aqui você calcula, vê a classificação e aprende o que esse número significa — e o que ele <strong>não</strong> diz.</p>
         <ul class="pill-row">
-          <li>Calculo instantaneo</li>
-          <li>Faixa de peso de referencia</li>
-          <li>Explicacao simples</li>
+          <li>Cálculo instantâneo</li>
+          <li>Faixa de peso de referência</li>
+          <li>Explicação simples</li>
         </ul>
       </div>
-
       <article class="card calculator" aria-labelledby="calc-title">
         <h2 id="calc-title">Calculadora</h2>
-        <p class="card-hint">Altura pode ser em metros (1,70) ou em centimetros (170).</p>
-
+        <p class="card-hint">Altura pode ser em metros (1,70) ou em centímetros (170).</p>
         <form id="imc-form" novalidate>
           <div class="fields">
-            <label>
-              Peso
-              <div class="field">
-                <input type="number" id="peso" name="peso" min="1" max="400" step="0.1" placeholder="Ex.: 65.5" required>
-                <span class="unit">kg</span>
-              </div>
-            </label>
-            <label>
-              Altura
-              <div class="field">
-                <input type="number" id="altura" name="altura" min="0.4" max="250" step="0.01" placeholder="Ex.: 1.70 ou 170" required>
-                <span class="unit" id="altura-unit">m / cm</span>
-              </div>
-            </label>
+            <label>Peso<div class="field"><input type="number" id="peso" name="peso" min="1" max="400" step="0.1" placeholder="Ex.: 65.5" required><span class="unit">kg</span></div></label>
+            <label>Altura<div class="field"><input type="number" id="altura" name="altura" min="0.4" max="250" step="0.01" placeholder="Ex.: 1.70 ou 170" required><span class="unit">m / cm</span></div></label>
           </div>
-
           <button type="submit" class="btn">Calcular IMC</button>
         </form>
-
         <p class="erro" id="erro" hidden></p>
-
         <div class="result" id="resultado" hidden>
           <div class="result-top">
-            <div>
-              <p class="imc-label">Seu IMC</p>
-              <p class="imc-value" id="imc-valor">—</p>
-            </div>
+            <div><p class="imc-label">Seu IMC</p><p class="imc-value" id="imc-valor">—</p></div>
             <span class="badge" id="imc-badge">—</span>
           </div>
-
           <div class="scale" aria-hidden="true">
             <div class="scale-bar"></div>
             <div class="scale-marker" id="scale-marker"></div>
-            <div class="scale-labels">
-              <span>16</span><span>18,5</span><span>25</span><span>30</span><span>40</span>
-            </div>
+            <div class="scale-labels"><span>16</span><span>18,5</span><span>25</span><span>30</span><span>40</span></div>
           </div>
-
           <p class="result-text" id="imc-texto"></p>
           <div class="stats">
-            <div>
-              <span>Peso informado</span>
-              <strong id="stat-peso">—</strong>
-            </div>
-            <div>
-              <span>Altura usada</span>
-              <strong id="stat-altura">—</strong>
-            </div>
-            <div>
-              <span>Faixa de referencia</span>
-              <strong id="stat-faixa">—</strong>
-            </div>
+            <div><span>Peso informado</span><strong id="stat-peso">—</strong></div>
+            <div><span>Altura usada</span><strong id="stat-altura">—</strong></div>
+            <div><span>Faixa de referência</span><strong id="stat-faixa">—</strong></div>
           </div>
         </div>
       </article>
     </section>
-
     <section class="info-grid" id="sobre">
       <article class="card">
-        <h2>O que e o IMC?</h2>
-        <p>
-          O IMC (Indice de Massa Corporal) e um numero usado por profissionais de saude
-          para ter uma ideia geral da relacao entre o peso e a altura de uma pessoa.
-        </p>
-        <p>
-          Ele foi criado pelo matematico Adolphe Quetelet e hoje e uma das referencias
-          mais usadas no mundo. E rapido de calcular, mas e so um ponto de partida.
-        </p>
+        <h2>O que é o IMC?</h2>
+        <p>O IMC (Índice de Massa Corporal) é um número usado por profissionais de saúde para ter uma ideia geral da relação entre o peso e a altura de uma pessoa.</p>
+        <p>Ele foi criado pelo matemático Adolphe Quetelet e hoje é uma das referências mais usadas no mundo. É rápido de calcular, mas é só um ponto de partida.</p>
       </article>
-
       <article class="card formula-card">
         <h2>Como se calcula</h2>
         <p class="formula">IMC = peso ÷ (altura × altura)</p>
@@ -130,95 +81,48 @@
           <li>68 ÷ 2,89 ≈ <strong>23,5</strong></li>
         </ul>
       </article>
-
       <article class="card">
-        <h2>O que o IMC nao mede</h2>
-        <p>O IMC nao diferencia musculo de gordura e nao olha idade, ossos ou rotina.</p>
+        <h2>O que o IMC não mede</h2>
+        <p>O IMC não diferencia músculo de gordura e não olha idade, ossos ou rotina.</p>
         <ul class="steps">
-          <li>Nao substitui consulta medica</li>
-          <li>Em criancas e adolescentes o ideal e a curva de crescimento</li>
-          <li>Atletas podem ter IMC alto por causa do musculo</li>
+          <li>Não substitui consulta médica</li>
+          <li>Em crianças e adolescentes o ideal é a curva de crescimento</li>
+          <li>Atletas podem ter IMC alto por causa do músculo</li>
         </ul>
       </article>
     </section>
-
     <section class="card table-card" id="tabela">
-      <h2>Tabela de classificacao (adultos)</h2>
-      <p class="card-hint">Referencia da Organizacao Mundial da Saude (OMS).</p>
+      <h2>Tabela de classificação (adultos)</h2>
+      <p class="card-hint">Referência da Organização Mundial da Saúde (OMS).</p>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr>
-              <th>IMC</th>
-              <th>Classificacao</th>
-              <th>O que isso indica</th>
-            </tr>
-          </thead>
+          <thead><tr><th>IMC</th><th>Classificação</th><th>O que isso indica</th></tr></thead>
           <tbody>
-            <tr data-cat="abaixo">
-              <td>Menor que 18,5</td>
-              <td>Abaixo do peso</td>
-              <td>Peso abaixo da faixa mais comum</td>
-            </tr>
-            <tr data-cat="normal">
-              <td>18,5 a 24,9</td>
-              <td>Peso adequado</td>
-              <td>Faixa considerada saudavel para a maioria dos adultos</td>
-            </tr>
-            <tr data-cat="sobrepeso">
-              <td>25,0 a 29,9</td>
-              <td>Sobrepeso</td>
-              <td>Acima da faixa de referencia</td>
-            </tr>
-            <tr data-cat="ob1">
-              <td>30,0 a 34,9</td>
-              <td>Obesidade grau I</td>
-              <td>Vale conversar com um profissional de saude</td>
-            </tr>
-            <tr data-cat="ob2">
-              <td>35,0 a 39,9</td>
-              <td>Obesidade grau II</td>
-              <td>Acompanhamento profissional e importante</td>
-            </tr>
-            <tr data-cat="ob3">
-              <td>40,0 ou mais</td>
-              <td>Obesidade grau III</td>
-              <td>Procure orientacao medica</td>
-            </tr>
+            <tr data-cat="abaixo"><td>Menor que 18,5</td><td>Abaixo do peso</td><td>Peso abaixo da faixa mais comum</td></tr>
+            <tr data-cat="normal"><td>18,5 a 24,9</td><td>Peso adequado</td><td>Faixa considerada saudável para a maioria dos adultos</td></tr>
+            <tr data-cat="sobrepeso"><td>25,0 a 29,9</td><td>Sobrepeso</td><td>Acima da faixa de referência</td></tr>
+            <tr data-cat="ob1"><td>30,0 a 34,9</td><td>Obesidade grau I</td><td>Vale conversar com um profissional de saúde</td></tr>
+            <tr data-cat="ob2"><td>35,0 a 39,9</td><td>Obesidade grau II</td><td>Acompanhamento profissional é importante</td></tr>
+            <tr data-cat="ob3"><td>40,0 ou mais</td><td>Obesidade grau III</td><td>Procure orientação médica</td></tr>
           </tbody>
         </table>
       </div>
     </section>
-
     <section class="tips" id="dicas">
-      <h2>Habitos que ajudam de verdade</h2>
-      <p class="section-lead">Cuidar da saude vai alem de um numero. Pequenas rotinas ja fazem diferenca.</p>
+      <h2>Hábitos que ajudam de verdade</h2>
+      <p class="section-lead">Cuidar da saúde vai além de um número. Pequenas rotinas já fazem diferença.</p>
       <div class="tips-grid">
-        <article class="card tip">
-          <h3>Mover o corpo</h3>
-          <p>Caminhar, brincar, dancar ou praticar um esporte. O importante e se mexer com regularidade e com prazer.</p>
-        </article>
-        <article class="card tip">
-          <h3>Comer com equilibrio</h3>
-          <p>Frutas, verduras, feijao, arroz e agua. Comidas variadas dao energia para estudar, brincar e crescer.</p>
-        </article>
-        <article class="card tip">
-          <h3>Dormir bem</h3>
-          <p>O corpo se recupera durante o sono. Uma rotina de descanso ajuda a concentracao e o humor.</p>
-        </article>
-        <article class="card tip">
-          <h3>Pedir ajuda</h3>
-          <p>Duvidas sobre peso ou crescimento? Converse com a familia e com um medico ou nutricionista.</p>
-        </article>
+        <article class="card tip"><h3>Mover o corpo</h3><p>Caminhar, brincar, dançar ou praticar um esporte. O importante é se mexer com regularidade e com prazer.</p></article>
+        <article class="card tip"><h3>Comer com equilíbrio</h3><p>Frutas, verduras, feijão, arroz e água. Comidas variadas dão energia para estudar, brincar e crescer.</p></article>
+        <article class="card tip"><h3>Dormir bem</h3><p>O corpo se recupera durante o sono. Uma rotina de descanso ajuda a concentração e o humor.</p></article>
+        <article class="card tip"><h3>Pedir ajuda</h3><p>Dúvidas sobre peso ou crescimento? Converse com a família e com um médico ou nutricionista.</p></article>
       </div>
     </section>
   </main>
-
   <footer>
-    <p>IMC Dados — projeto educacional. O IMC e apenas uma referencia e nao substitui avaliacao profissional.</p>
+    <p>IMC Dados — projeto educacional. O IMC é apenas uma referência e não substitui avaliação profissional.</p>
     <p>Feito com HTML, CSS e JavaScript · Publicado no GitHub Pages</p>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>

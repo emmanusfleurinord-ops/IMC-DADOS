@@ -1,6 +1,6 @@
 # IMC Dados
 
-Calculadora moderna do **Indice de Massa Corporal (IMC)**, com visual novo, classificacao colorida, faixa de peso de referencia e textos educativos.
+Calculadora moderna do **Índice de Massa Corporal (IMC)**, com visual novo, classificação colorida, faixa de peso de referência e textos educativos.
 
 Site publicado: https://emmanusfleurinord-ops.github.io/IMC-DADOS/
 
@@ -8,8 +8,8 @@ Site publicado: https://emmanusfleurinord-ops.github.io/IMC-DADOS/
 
 - Frontend em HTML, CSS e JavaScript (funciona no GitHub Pages)
 - Backend simples em Python (`app.py`) para calcular no terminal
-- Tabela da OMS, formula do IMC e dicas de habitos saudaveis
-- Aceita altura em metros (`1.70`) ou em centimetros (`170`)
+- Tabela da OMS, fórmula do IMC e dicas de hábitos saudáveis
+- Aceita altura em metros (`1.70`) ou em centímetros (`170`)
 
 ## Como abrir o site
 
@@ -21,6 +21,6 @@ Basta abrir o arquivo `index.html` no navegador, ou visitar o link do GitHub Pag
 python3 app.py
 ```
 
-## Formula
+## Fórmula
 
-IMC = peso (kg) / altura^2 (m)
+IMC = peso (kg) ÷ altura² (m)

@@ -22,9 +22,8 @@ def calcular_imc(peso: float, altura: float) -> None:
     classificacao = classificar_imc(imc)
     minimo = 18.5 * altura * altura
     maximo = 24.9 * altura * altura
-
     print(f"IMC: {imc:.2f} - {classificacao}")
-    print(f"Faixa de peso de referencia: {minimo:.1f} a {maximo:.1f} kg")
+    print(f"Faixa de peso de referência: {minimo:.1f} a {maximo:.1f} kg")
 
 
 if __name__ == "__main__":
