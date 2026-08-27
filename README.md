@@ -1,24 +1,20 @@
-# IMC-DADOS
+# Projeto IMC
 
-Projeto simples para calcular o Índice de Massa Corporal (IMC).
+Calculadora do Índice de Massa Corporal.
 
 ## Arquivos
+- index.html
+- style.css
+- script.js
+- app.py
 
-- `index.html` — página da calculadora
-- `style.css` — visual da página
-- `script.js` — cálculo do IMC
-- `app.py` — o mesmo cálculo no Python
+## Como usar
+1. Abra o index.html no navegador.
+2. Digite o peso em kg e a altura em metros.
+3. Clique em Calcular IMC.
 
-## Como abrir
-
-Abra o arquivo `index.html` no navegador.
-
-## Como rodar o Python
-
-```bash
+## Python
 python3 app.py
-```
 
 ## Fórmula
-
-IMC = peso (kg) / (altura × altura)
+IMC = peso / (altura * altura)
