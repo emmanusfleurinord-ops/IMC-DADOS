@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projeto IMC</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -23,7 +21,7 @@
 
     .caixa {
       width: 100%;
-      max-width: 430px;
+      max-width: 460px;
       background: #0a0a0a;
       padding: 28px;
       border-radius: 16px;
@@ -44,9 +42,12 @@
       color: #94a3b8;
     }
 
-    p {
-      color: #cbd5e1;
-      line-height: 1.5;
+    p { color: #cbd5e1; line-height: 1.5; }
+
+    .linha {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
     }
 
     label {
@@ -57,7 +58,7 @@
       color: #67e8f9;
     }
 
-    input {
+    input, select {
       width: 100%;
       padding: 10px;
       border: 1px solid #22d3ee;
@@ -69,9 +70,9 @@
       box-shadow: 0 0 8px rgba(34, 211, 238, 0.35);
     }
 
-    input:focus {
-      box-shadow: 0 0 16px #22d3ee;
-    }
+    select option { background: #000000; color: #ffffff; }
+
+    input:focus, select:focus { box-shadow: 0 0 16px #22d3ee; }
 
     button {
       width: 100%;
@@ -92,18 +93,27 @@
       box-shadow: 0 0 28px #67e8f9;
     }
 
-    #resultado {
+    #ficha {
+      display: none;
       margin-top: 16px;
       padding: 14px;
+      border: 1px solid #22d3ee;
+      border-radius: 10px;
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.4);
+    }
+
+    #ficha p {
+      margin: 6px 0;
+      color: #e2e8f0;
+    }
+
+    #resultado {
+      margin: 10px 0 0;
       text-align: center;
       font-size: 18px;
       font-weight: bold;
       color: #67e8f9;
       text-shadow: 0 0 12px #22d3ee;
-      border: 1px solid #22d3ee;
-      border-radius: 10px;
-      min-height: 24px;
-      box-shadow: 0 0 16px rgba(34, 211, 238, 0.4);
     }
 
     h2 {
@@ -132,13 +142,8 @@
       text-shadow: 0 0 8px #22d3ee;
     }
 
-    tr:nth-child(even) td {
-      background: #050505;
-    }
-
-    tr:nth-child(odd) td {
-      background: #0b0b0b;
-    }
+    tr:nth-child(even) td { background: #050505; }
+    tr:nth-child(odd) td { background: #0b0b0b; }
 
     .c1 { color: #60a5fa; text-shadow: 0 0 8px #3b82f6; }
     .c2 { color: #4ade80; text-shadow: 0 0 8px #22c55e; }
@@ -146,6 +151,10 @@
     .c4 { color: #fb923c; text-shadow: 0 0 8px #f97316; }
     .c5 { color: #f87171; text-shadow: 0 0 8px #ef4444; }
     .c6 { color: #f472b6; text-shadow: 0 0 8px #ec4899; }
+
+    @media (max-width: 500px) {
+      .linha { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -155,17 +164,65 @@
 
     <p>O IMC mostra a relação entre o peso e a altura.</p>
     <p><strong>Fórmula:</strong> IMC = peso ÷ (altura × altura)</p>
-    <p>Peso em kg e altura em metros. Exemplo: 70 kg e 1,75 m.</p>
 
-    <label for="peso">Peso (kg)</label>
-    <input type="number" id="peso" step="0.1" min="1">
+    <div class="linha">
+      <div>
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" placeholder="Seu nome">
+      </div>
+      <div>
+        <label for="idade">Idade</label>
+        <input type="number" id="idade" min="1" max="120" placeholder="Anos">
+      </div>
+    </div>
 
-    <label for="altura">Altura (m)</label>
-    <input type="number" id="altura" step="0.01" min="0.5">
+    <div class="linha">
+      <div>
+        <label for="sexo">Sexo</label>
+        <select id="sexo">
+          <option value="">Escolha</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+        </select>
+      </div>
+      <div>
+        <label for="sangue">Tipo sanguíneo</label>
+        <select id="sangue">
+          <option value="">Escolha</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="linha">
+      <div>
+        <label for="peso">Peso (kg)</label>
+        <input type="number" id="peso" step="0.1" min="1">
+      </div>
+      <div>
+        <label for="altura">Altura (m)</label>
+        <input type="number" id="altura" step="0.01" min="0.5">
+      </div>
+    </div>
 
     <button onclick="calcularIMC()">Calcular IMC</button>
 
-    <p id="resultado"></p>
+    <div id="ficha">
+      <p id="dado-nome"></p>
+      <p id="dado-idade"></p>
+      <p id="dado-sexo"></p>
+      <p id="dado-sangue"></p>
+      <p id="dado-peso"></p>
+      <p id="dado-altura"></p>
+      <p id="resultado"></p>
+    </div>
 
     <h2>Classificação</h2>
     <table>
@@ -181,11 +238,23 @@
 
   <script>
     function calcularIMC() {
+      const nome = document.getElementById("nome").value.trim();
+      const idade = document.getElementById("idade").value;
+      const sexo = document.getElementById("sexo").value;
+      const sangue = document.getElementById("sangue").value;
       const peso = parseFloat(document.getElementById("peso").value);
       const altura = parseFloat(document.getElementById("altura").value);
+      const ficha = document.getElementById("ficha");
       const resultado = document.getElementById("resultado");
 
       if (!peso || !altura || peso <= 0 || altura <= 0) {
+        ficha.style.display = "block";
+        document.getElementById("dado-nome").innerText = "";
+        document.getElementById("dado-idade").innerText = "";
+        document.getElementById("dado-sexo").innerText = "";
+        document.getElementById("dado-sangue").innerText = "";
+        document.getElementById("dado-peso").innerText = "";
+        document.getElementById("dado-altura").innerText = "";
         resultado.innerText = "Digite o peso e a altura.";
         resultado.style.color = "#f87171";
         return;
@@ -215,6 +284,13 @@
         cor = "#f472b6";
       }
 
+      ficha.style.display = "block";
+      document.getElementById("dado-nome").innerText = "Nome: " + (nome || "Não informado");
+      document.getElementById("dado-idade").innerText = "Idade: " + (idade ? idade + " anos" : "Não informada");
+      document.getElementById("dado-sexo").innerText = "Sexo: " + (sexo || "Não informado");
+      document.getElementById("dado-sangue").innerText = "Tipo sanguíneo: " + (sangue || "Não informado");
+      document.getElementById("dado-peso").innerText = "Peso: " + peso.toFixed(1) + " kg";
+      document.getElementById("dado-altura").innerText = "Altura: " + altura.toFixed(2) + " m";
       resultado.style.color = cor;
       resultado.style.textShadow = "0 0 12px " + cor;
       resultado.innerText = "IMC: " + imc.toFixed(2) + " - " + classificacao;
