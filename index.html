@@ -15,34 +15,37 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #dbeafe;
+      background: #000000;
       font-family: Arial, Helvetica, sans-serif;
       padding: 20px;
+      color: #f8fafc;
     }
 
     .caixa {
       width: 100%;
-      max-width: 420px;
-      background: #ffffff;
+      max-width: 430px;
+      background: #0a0a0a;
       padding: 28px;
-      border-radius: 14px;
-      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.15);
+      border-radius: 16px;
+      border: 1px solid #22d3ee;
+      box-shadow: 0 0 25px #22d3ee, 0 0 60px rgba(34, 211, 238, 0.25);
     }
 
     h1, h2 {
       margin: 0;
-      color: #1e3a8a;
       text-align: center;
+      color: #67e8f9;
+      text-shadow: 0 0 10px #22d3ee;
     }
 
     .subtitulo {
       margin: 6px 0 16px;
       text-align: center;
-      color: #64748b;
+      color: #94a3b8;
     }
 
     p {
-      color: #334155;
+      color: #cbd5e1;
       line-height: 1.5;
     }
 
@@ -51,15 +54,23 @@
       margin-top: 12px;
       margin-bottom: 6px;
       font-weight: bold;
-      color: #1e3a8a;
+      color: #67e8f9;
     }
 
     input {
       width: 100%;
       padding: 10px;
-      border: 1px solid #93c5fd;
+      border: 1px solid #22d3ee;
       border-radius: 8px;
       font-size: 16px;
+      background: #000000;
+      color: #ffffff;
+      outline: none;
+      box-shadow: 0 0 8px rgba(34, 211, 238, 0.35);
+    }
+
+    input:focus {
+      box-shadow: 0 0 16px #22d3ee;
     }
 
     button {
@@ -68,29 +79,36 @@
       padding: 12px;
       border: 0;
       border-radius: 8px;
-      background: #2563eb;
-      color: #ffffff;
+      background: #06b6d4;
+      color: #000000;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
+      box-shadow: 0 0 18px #22d3ee;
     }
 
     button:hover {
-      background: #1d4ed8;
+      background: #22d3ee;
+      box-shadow: 0 0 28px #67e8f9;
     }
 
     #resultado {
       margin-top: 16px;
-      padding: 12px;
+      padding: 14px;
       text-align: center;
       font-size: 18px;
       font-weight: bold;
-      color: #1e3a8a;
+      color: #67e8f9;
+      text-shadow: 0 0 12px #22d3ee;
+      border: 1px solid #22d3ee;
+      border-radius: 10px;
+      min-height: 24px;
+      box-shadow: 0 0 16px rgba(34, 211, 238, 0.4);
     }
 
     h2 {
-      margin-top: 8px;
-      margin-bottom: 10px;
+      margin-top: 20px;
+      margin-bottom: 12px;
       font-size: 18px;
     }
 
@@ -98,17 +116,36 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
+      overflow: hidden;
+      border-radius: 10px;
     }
 
     th, td {
-      border: 1px solid #bfdbfe;
-      padding: 8px;
+      padding: 10px;
       text-align: left;
+      border-bottom: 1px solid #164e63;
     }
 
     th {
-      background: #eff6ff;
+      background: #083344;
+      color: #67e8f9;
+      text-shadow: 0 0 8px #22d3ee;
     }
+
+    tr:nth-child(even) td {
+      background: #050505;
+    }
+
+    tr:nth-child(odd) td {
+      background: #0b0b0b;
+    }
+
+    .c1 { color: #60a5fa; text-shadow: 0 0 8px #3b82f6; }
+    .c2 { color: #4ade80; text-shadow: 0 0 8px #22c55e; }
+    .c3 { color: #facc15; text-shadow: 0 0 8px #eab308; }
+    .c4 { color: #fb923c; text-shadow: 0 0 8px #f97316; }
+    .c5 { color: #f87171; text-shadow: 0 0 8px #ef4444; }
+    .c6 { color: #f472b6; text-shadow: 0 0 8px #ec4899; }
   </style>
 </head>
 <body>
@@ -133,12 +170,12 @@
     <h2>Classificação</h2>
     <table>
       <tr><th>IMC</th><th>Resultado</th></tr>
-      <tr><td>Menor que 18,5</td><td>Abaixo do peso</td></tr>
-      <tr><td>18,5 a 24,9</td><td>Peso normal</td></tr>
-      <tr><td>25,0 a 29,9</td><td>Sobrepeso</td></tr>
-      <tr><td>30,0 a 34,9</td><td>Obesidade grau I</td></tr>
-      <tr><td>35,0 a 39,9</td><td>Obesidade grau II</td></tr>
-      <tr><td>40,0 ou mais</td><td>Obesidade grau III</td></tr>
+      <tr><td>Menor que 18,5</td><td class="c1">Abaixo do peso</td></tr>
+      <tr><td>18,5 a 24,9</td><td class="c2">Peso normal</td></tr>
+      <tr><td>25,0 a 29,9</td><td class="c3">Sobrepeso</td></tr>
+      <tr><td>30,0 a 34,9</td><td class="c4">Obesidade grau I</td></tr>
+      <tr><td>35,0 a 39,9</td><td class="c5">Obesidade grau II</td></tr>
+      <tr><td>40,0 ou mais</td><td class="c6">Obesidade grau III</td></tr>
     </table>
   </div>
 
@@ -150,26 +187,36 @@
 
       if (!peso || !altura || peso <= 0 || altura <= 0) {
         resultado.innerText = "Digite o peso e a altura.";
+        resultado.style.color = "#f87171";
         return;
       }
 
       const imc = peso / (altura * altura);
       let classificacao = "";
+      let cor = "#67e8f9";
 
       if (imc < 18.5) {
         classificacao = "Abaixo do peso";
+        cor = "#60a5fa";
       } else if (imc < 25) {
         classificacao = "Peso normal";
+        cor = "#4ade80";
       } else if (imc < 30) {
         classificacao = "Sobrepeso";
+        cor = "#facc15";
       } else if (imc < 35) {
         classificacao = "Obesidade grau I";
+        cor = "#fb923c";
       } else if (imc < 40) {
         classificacao = "Obesidade grau II";
+        cor = "#f87171";
       } else {
         classificacao = "Obesidade grau III";
+        cor = "#f472b6";
       }
 
+      resultado.style.color = cor;
+      resultado.style.textShadow = "0 0 12px " + cor;
       resultado.innerText = "IMC: " + imc.toFixed(2) + " - " + classificacao;
     }
   </script>
