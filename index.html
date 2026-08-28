@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projeto IMC</title>
+  <title>Ficha de Exame de IMC</title>
   <style>
     * { box-sizing: border-box; }
 
@@ -19,9 +19,9 @@
       color: #f8fafc;
     }
 
-    .caixa {
+    .folha {
       width: 100%;
-      max-width: 460px;
+      max-width: 520px;
       background: #0a0a0a;
       padding: 28px;
       border-radius: 16px;
@@ -37,12 +37,20 @@
     }
 
     .subtitulo {
-      margin: 6px 0 16px;
+      margin: 6px 0 14px;
       text-align: center;
       color: #94a3b8;
     }
 
     p { color: #cbd5e1; line-height: 1.5; }
+
+    .aviso {
+      font-size: 13px;
+      color: #94a3b8;
+      border: 1px dashed #164e63;
+      padding: 10px;
+      border-radius: 8px;
+    }
 
     .linha {
       display: grid;
@@ -71,7 +79,6 @@
     }
 
     select option { background: #000000; color: #ffffff; }
-
     input:focus, select:focus { box-shadow: 0 0 16px #22d3ee; }
 
     button {
@@ -93,7 +100,7 @@
       box-shadow: 0 0 28px #67e8f9;
     }
 
-    #ficha {
+    #resultado-folha {
       display: none;
       margin-top: 16px;
       padding: 14px;
@@ -102,18 +109,16 @@
       box-shadow: 0 0 16px rgba(34, 211, 238, 0.4);
     }
 
-    #ficha p {
+    #resultado-folha p {
       margin: 6px 0;
       color: #e2e8f0;
     }
 
-    #resultado {
-      margin: 10px 0 0;
+    #imc-final {
+      margin-top: 10px;
       text-align: center;
       font-size: 18px;
       font-weight: bold;
-      color: #67e8f9;
-      text-shadow: 0 0 12px #22d3ee;
     }
 
     h2 {
@@ -126,8 +131,6 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
-      overflow: hidden;
-      border-radius: 10px;
     }
 
     th, td {
@@ -142,9 +145,6 @@
       text-shadow: 0 0 8px #22d3ee;
     }
 
-    tr:nth-child(even) td { background: #050505; }
-    tr:nth-child(odd) td { background: #0b0b0b; }
-
     .c1 { color: #60a5fa; text-shadow: 0 0 8px #3b82f6; }
     .c2 { color: #4ade80; text-shadow: 0 0 8px #22c55e; }
     .c3 { color: #facc15; text-shadow: 0 0 8px #eab308; }
@@ -158,25 +158,25 @@
   </style>
 </head>
 <body>
-  <div class="caixa">
-    <h1>Projeto IMC</h1>
-    <p class="subtitulo">Índice de Massa Corporal</p>
+  <div class="folha">
+    <h1>Ficha de Exame de IMC</h1>
+    <p class="subtitulo">Avaliação de peso e altura</p>
 
-    <p>O IMC mostra a relação entre o peso e a altura.</p>
+    <p class="aviso">
+      Em um consultório, o médico pede nome, idade, sexo, peso e altura.
+      O tipo sanguíneo não faz parte do cálculo do IMC.
+    </p>
+
     <p><strong>Fórmula:</strong> IMC = peso ÷ (altura × altura)</p>
 
+    <label for="nome">Nome do paciente</label>
+    <input type="text" id="nome" placeholder="Nome completo">
+
     <div class="linha">
-      <div>
-        <label for="nome">Nome</label>
-        <input type="text" id="nome" placeholder="Seu nome">
-      </div>
       <div>
         <label for="idade">Idade</label>
         <input type="number" id="idade" min="1" max="120" placeholder="Anos">
       </div>
-    </div>
-
-    <div class="linha">
       <div>
         <label for="sexo">Sexo</label>
         <select id="sexo">
@@ -185,19 +185,16 @@
           <option value="Feminino">Feminino</option>
         </select>
       </div>
+    </div>
+
+    <div class="linha">
       <div>
-        <label for="sangue">Tipo sanguíneo</label>
-        <select id="sangue">
-          <option value="">Escolha</option>
-          <option value="A+">A+</option>
-          <option value="A-">A-</option>
-          <option value="B+">B+</option>
-          <option value="B-">B-</option>
-          <option value="AB+">AB+</option>
-          <option value="AB-">AB-</option>
-          <option value="O+">O+</option>
-          <option value="O-">O-</option>
-        </select>
+        <label for="data">Data do exame</label>
+        <input type="date" id="data">
+      </div>
+      <div>
+        <label for="profissional">Profissional</label>
+        <input type="text" id="profissional" placeholder="Nome do médico">
       </div>
     </div>
 
@@ -208,20 +205,21 @@
       </div>
       <div>
         <label for="altura">Altura (m)</label>
-        <input type="number" id="altura" step="0.01" min="0.5">
+        <input type="number" id="altura" step="0.01" min="0.5" placeholder="Ex.: 1.70">
       </div>
     </div>
 
-    <button onclick="calcularIMC()">Calcular IMC</button>
+    <button onclick="calcularIMC()">Calcular exame</button>
 
-    <div id="ficha">
-      <p id="dado-nome"></p>
-      <p id="dado-idade"></p>
-      <p id="dado-sexo"></p>
-      <p id="dado-sangue"></p>
-      <p id="dado-peso"></p>
-      <p id="dado-altura"></p>
-      <p id="resultado"></p>
+    <div id="resultado-folha">
+      <p id="r-nome"></p>
+      <p id="r-idade"></p>
+      <p id="r-sexo"></p>
+      <p id="r-data"></p>
+      <p id="r-profissional"></p>
+      <p id="r-peso"></p>
+      <p id="r-altura"></p>
+      <p id="imc-final"></p>
     </div>
 
     <h2>Classificação</h2>
@@ -237,26 +235,45 @@
   </div>
 
   <script>
+    function hoje() {
+      const agora = new Date();
+      const ano = agora.getFullYear();
+      const mes = String(agora.getMonth() + 1).padStart(2, "0");
+      const dia = String(agora.getDate()).padStart(2, "0");
+      return ano + "-" + mes + "-" + dia;
+    }
+
+    document.getElementById("data").value = hoje();
+
+    function formatarData(valor) {
+      if (!valor) return "Não informada";
+      const partes = valor.split("-");
+      return partes[2] + "/" + partes[1] + "/" + partes[0];
+    }
+
     function calcularIMC() {
       const nome = document.getElementById("nome").value.trim();
       const idade = document.getElementById("idade").value;
       const sexo = document.getElementById("sexo").value;
-      const sangue = document.getElementById("sangue").value;
+      const data = document.getElementById("data").value;
+      const profissional = document.getElementById("profissional").value.trim();
       const peso = parseFloat(document.getElementById("peso").value);
       const altura = parseFloat(document.getElementById("altura").value);
-      const ficha = document.getElementById("ficha");
-      const resultado = document.getElementById("resultado");
+      const caixa = document.getElementById("resultado-folha");
+      const final = document.getElementById("imc-final");
+
+      caixa.style.display = "block";
 
       if (!peso || !altura || peso <= 0 || altura <= 0) {
-        ficha.style.display = "block";
-        document.getElementById("dado-nome").innerText = "";
-        document.getElementById("dado-idade").innerText = "";
-        document.getElementById("dado-sexo").innerText = "";
-        document.getElementById("dado-sangue").innerText = "";
-        document.getElementById("dado-peso").innerText = "";
-        document.getElementById("dado-altura").innerText = "";
-        resultado.innerText = "Digite o peso e a altura.";
-        resultado.style.color = "#f87171";
+        document.getElementById("r-nome").innerText = "";
+        document.getElementById("r-idade").innerText = "";
+        document.getElementById("r-sexo").innerText = "";
+        document.getElementById("r-data").innerText = "";
+        document.getElementById("r-profissional").innerText = "";
+        document.getElementById("r-peso").innerText = "";
+        document.getElementById("r-altura").innerText = "";
+        final.style.color = "#f87171";
+        final.innerText = "Digite o peso e a altura.";
         return;
       }
 
@@ -264,36 +281,23 @@
       let classificacao = "";
       let cor = "#67e8f9";
 
-      if (imc < 18.5) {
-        classificacao = "Abaixo do peso";
-        cor = "#60a5fa";
-      } else if (imc < 25) {
-        classificacao = "Peso normal";
-        cor = "#4ade80";
-      } else if (imc < 30) {
-        classificacao = "Sobrepeso";
-        cor = "#facc15";
-      } else if (imc < 35) {
-        classificacao = "Obesidade grau I";
-        cor = "#fb923c";
-      } else if (imc < 40) {
-        classificacao = "Obesidade grau II";
-        cor = "#f87171";
-      } else {
-        classificacao = "Obesidade grau III";
-        cor = "#f472b6";
-      }
+      if (imc < 18.5) { classificacao = "Abaixo do peso"; cor = "#60a5fa"; }
+      else if (imc < 25) { classificacao = "Peso normal"; cor = "#4ade80"; }
+      else if (imc < 30) { classificacao = "Sobrepeso"; cor = "#facc15"; }
+      else if (imc < 35) { classificacao = "Obesidade grau I"; cor = "#fb923c"; }
+      else if (imc < 40) { classificacao = "Obesidade grau II"; cor = "#f87171"; }
+      else { classificacao = "Obesidade grau III"; cor = "#f472b6"; }
 
-      ficha.style.display = "block";
-      document.getElementById("dado-nome").innerText = "Nome: " + (nome || "Não informado");
-      document.getElementById("dado-idade").innerText = "Idade: " + (idade ? idade + " anos" : "Não informada");
-      document.getElementById("dado-sexo").innerText = "Sexo: " + (sexo || "Não informado");
-      document.getElementById("dado-sangue").innerText = "Tipo sanguíneo: " + (sangue || "Não informado");
-      document.getElementById("dado-peso").innerText = "Peso: " + peso.toFixed(1) + " kg";
-      document.getElementById("dado-altura").innerText = "Altura: " + altura.toFixed(2) + " m";
-      resultado.style.color = cor;
-      resultado.style.textShadow = "0 0 12px " + cor;
-      resultado.innerText = "IMC: " + imc.toFixed(2) + " - " + classificacao;
+      document.getElementById("r-nome").innerText = "Paciente: " + (nome || "Não informado");
+      document.getElementById("r-idade").innerText = "Idade: " + (idade ? idade + " anos" : "Não informada");
+      document.getElementById("r-sexo").innerText = "Sexo: " + (sexo || "Não informado");
+      document.getElementById("r-data").innerText = "Data do exame: " + formatarData(data);
+      document.getElementById("r-profissional").innerText = "Profissional: " + (profissional || "Não informado");
+      document.getElementById("r-peso").innerText = "Peso: " + peso.toFixed(1) + " kg";
+      document.getElementById("r-altura").innerText = "Altura: " + altura.toFixed(2) + " m";
+      final.style.color = cor;
+      final.style.textShadow = "0 0 12px " + cor;
+      final.innerText = "Resultado do IMC: " + imc.toFixed(2) + " - " + classificacao;
     }
   </script>
 </body>
